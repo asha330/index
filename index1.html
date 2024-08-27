@@ -1,9 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device_width,initial_scale-1.0">
+<title>Simple web page</title>
 <body>
-
 <h1>My First Heading</h1>
-<p>My first paragraph.</p>
-
+<p>This is my simple web page using html.</p>
+<form action="/login" method="POST">
+<label for="username">Username:</label>
+<input type="text" id="username" name="username" required><br><br>
+<label for="password">password:</label>
+<input type="password" id="password" name="password" required><br><br><br>
+<button type="Submit" >login</button>
+</form>    
 </body>
 </html>
