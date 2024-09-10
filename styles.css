@@ -1,0 +1,41 @@
+body {
+font-family: Arial, sans-serif;
+}
+header {
+background-color: #333;
+color: #fff;
+text-align: center;
+padding: 1rem;
+}
+main {
+max-width: 800px;
+margin: 0 auto;
+padding: 2rem;
+}
+#login-form, #user-dashboard {
+margin-bottom: 2rem;
+}
+#login-form h2, #user-dashboard h2, #feed h2 {
+margin-bottom: 1rem;
+}
+input, textarea, button {
+margin: 0.5rem; 
+padding: 0.3rem;
+}
+button {
+background-color: #333;
+color: #fff;
+border: none; 
+cursor: pointer;
+}
+ul {
+list-style-type: none;
+padding-left: 0;
+}
+li {
+border: 1px solid #ddd;
+padding: 1rem;
+margin-bottom: 1rem;
+}
+li p {
+margin: 0;}
