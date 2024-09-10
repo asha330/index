@@ -2,8 +2,8 @@ body {
 font-family: Arial, sans-serif;
 }
 header {
-background-color: #333;
-color: #fff;
+background-color:black;
+color:yellow;
 text-align: center;
 padding: 1rem;
 }
@@ -23,8 +23,8 @@ margin: 0.5rem;
 padding: 0.3rem;
 }
 button {
-background-color: #333;
-color: #fff;
+background-color:pink;
+color:black;
 border: none; 
 cursor: pointer;
 }
