@@ -1,6 +1,6 @@
 // Sample menu data
 const menuItems = [
-    { id: 1, name: '🍔Burger', price: 5.99 },
+    { id: 1, name: 'Burger', price: 5.99 },
     { id: 2, name: 'Pizza', price: 8.99 },
     { id: 3, name: 'Pasta', price: 7.49 },
     { id: 4, name: 'Salad', price: 4.99 },
