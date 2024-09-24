@@ -1,0 +1,99 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+}
+
+header.navbar {
+  background-color: #007bff;
+  padding: 1rem;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header.navbar h1 {
+  margin: 0;
+}
+
+header.navbar nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+header.navbar nav ul li {
+  display: inline;
+}
+
+header.navbar nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+header.navbar nav ul li a:hover {
+  text-decoration: underline;
+}
+
+main {
+  padding: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Form Styles */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 400px;
+  margin: 20px 0;
+}
+
+input, select, button {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Product List Styles */
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.product-item {
+  background: white;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+  width: 200px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.product-item h3 {
+  margin: 0;
+}
+
+.product-item p {
+  margin: 5px 0;
+}
