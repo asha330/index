@@ -1,4 +1,4 @@
-import { registerUser, loginUser, isUserLoggedIn, getAllUsers } from './users.js';
+import { registerUser, loginUser, isUserLoggedIn, getAllUsers } from './microuser.js';
 
 let posts = [];
 let currentUser = null;
