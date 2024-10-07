@@ -10,20 +10,29 @@ let posts = JSON.parse(localStorage.getItem('posts')) || [];
 // Function to display posts
 function displayPosts() {
     postsContainer.innerHTML = '';
-    posts.forEach((post, index) => {
+    posts.forEach((post, postIndex) => {
         const postElement = document.createElement('div');
         postElement.className = 'post';
         postElement.innerHTML = `
             <p>${post.content}</p>
             <p><small>${post.date}</small></p>
             <p>👍 Likes: ${post.likes} | 👎 Dislikes: ${post.dislikes}</p>
-            <button class="like" onclick="likePost(${index})">👍 Like</button>
-            <button class="dislike" onclick="dislikePost(${index})">👎 Dislike</button>
-            <input type="text" class="comment-input" id="comment-input-${index}" placeholder="Add a comment with emojis">
-            <button onclick="addComment(${index})">💬 Comment</button>
+            <button class="like" onclick="likePost(${postIndex})">👍 Like</button>
+            <button class="dislike" onclick="dislikePost(${postIndex})">👎 Dislike</button>
+            <input type="text" class="comment-input" id="comment-input-${postIndex}" placeholder="Add a comment with emojis">
+            <button onclick="addComment(${postIndex})">💬 Comment</button>
             <div>
                 <strong>Comments:</strong>
-                <ul>${post.comments.map(comment => `<li>${comment}</li>`).join('')}</ul>
+                <ul>
+                    ${post.comments.map((comment, commentIndex) => `
+                        <li>
+                            ${comment.text} 
+                            <br> 👍 ${comment.likes} 👎 ${comment.dislikes}
+                            <button onclick="likeComment(${postIndex}, ${commentIndex})">👍 Like</button>
+                            <button onclick="dislikeComment(${postIndex}, ${commentIndex})">👎 Dislike</button>
+                        </li>
+                    `).join('')}
+                </ul>
             </div>
         `;
         postsContainer.appendChild(postElement);
@@ -35,7 +44,6 @@ loginForm.addEventListener('submit', (event) => {
     event.preventDefault();
     const username = document.getElementById('username').value;
 
-    // Simple check for username (replace with real authentication if needed)
     if (username) {
         alert(`Login successful! Welcome, ${username}!`);
         loginContainer.style.display = 'none';
@@ -76,16 +84,35 @@ function dislikePost(index) {
     displayPosts();
 }
 
-// Function to add a comment
+// Function to add a comment with likes and dislikes
 function addComment(index) {
     const commentInput = document.getElementById(`comment-input-${index}`);
     const comment = commentInput.value;
     if (comment) {
-        posts[index].comments.push(comment + ' 😊');
+        const newComment = {
+            text: comment + ' 😊',
+            likes: 0,
+            dislikes: 0
+        };
+        posts[index].comments.push(newComment);
         commentInput.value = '';
         savePosts();
         displayPosts();
     }
+}
+
+// Function to like a comment
+function likeComment(postIndex, commentIndex) {
+    posts[postIndex].comments[commentIndex].likes++;
+    savePosts();
+    displayPosts();
+}
+
+// Function to dislike a comment
+function dislikeComment(postIndex, commentIndex) {
+    posts[postIndex].comments[commentIndex].dislikes++;
+    savePosts();
+    displayPosts();
 }
 
 // Save posts to localStorage
