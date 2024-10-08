@@ -33,10 +33,13 @@ main {
     background-color: white;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px; /* Rounded corners */
 }
 
 .menu h2, .cart h2 {
     margin-bottom: 20px;
+    font-size: 1.5em; /* Increased heading size */
+    letter-spacing: 1px; /* Spacing between letters */
 }
 
 ul {
@@ -45,8 +48,15 @@ ul {
 
 li {
     display: flex;
+    align-items: center; /* Center items vertically */
     justify-content: space-between;
     margin-bottom: 10px;
+}
+
+li img {
+    width: 50px; /* Set the width of the images */
+    height: 50px; /* Set the height of the images */
+    margin-right: 10px; /* Space between the image and text */
 }
 
 button {
@@ -55,6 +65,7 @@ button {
     border: none;
     padding: 10px 20px;
     cursor: pointer;
+    transition: background-color 0.3s ease; /* Transition effect */
 }
 
 button:hover {
@@ -65,4 +76,14 @@ button:hover {
     margin-top: 20px;
     font-size: 1.2em;
     text-align: right;
+}
+
+@media (max-width: 768px) {
+    main {
+        flex-direction: column;
+    }
+    .menu, .cart {
+        width: 100%;
+        margin-bottom: 20px;
+    }
 }
