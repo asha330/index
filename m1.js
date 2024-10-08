@@ -44,14 +44,13 @@ function displayPosts() {
 // Handle login
 loginForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    const username = document.getElementById('username').value.trim();
+    const username = document.getElementById('username').value;
 
     if (username) {
         currentUser = username; // Save current username
-        alert(`Login successful! Welcome, ${username}!`);
+        alert(`Login successful! Welcome, ${username}!`); // Corrected string interpolation
         loginContainer.style.display = 'none';
         postContainer.style.display = 'block'; // Show post container
-        displayPosts(); // Display posts after login
     } else {
         alert('Please enter a username.');
     }
@@ -60,9 +59,9 @@ loginForm.addEventListener('submit', (event) => {
 // Function to handle post submission
 postForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    const content = postContent.value.trim();
+    const content = postContent.value;
     
-    if (content === '') {
+    if (content.trim() === '') {
         alert('Post content cannot be empty.'); // Feedback for empty post
         return;
     }
@@ -77,9 +76,9 @@ postForm.addEventListener('submit', (event) => {
     };
 
     posts.push(newPost);
-    postContent.value = ''; // Clear input field
+    postContent.value = '';
     savePosts(); // Save posts in localStorage
-    displayPosts(); // Refresh the post display
+    displayPosts();
 });
 
 // Function to like a post
@@ -99,9 +98,9 @@ function dislikePost(index) {
 // Function to add a comment with likes and dislikes
 function addComment(index) {
     const commentInput = document.getElementById(`comment-input-${index}`);
-    const comment = commentInput.value.trim();
+    const comment = commentInput.value;
 
-    if (comment === '') {
+    if (comment.trim() === '') {
         alert('Comment cannot be empty.'); // Feedback for empty comment
         return; // Stop further execution if the comment is empty
     }
@@ -113,7 +112,7 @@ function addComment(index) {
     };
 
     posts[index].comments.push(newComment);
-    commentInput.value = ''; // Clear the input
+    commentInput.value = '';
     savePosts();
     displayPosts();
 }
