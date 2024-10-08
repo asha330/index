@@ -1,6 +1,6 @@
 // Sample menu data with images
 const menuItems = [
-    { id: 1, name: 'Burger', price: 5.99, image: 'https://via.placeholder.com/50?text=Burger' },
+    { id: 1, name: 'Burger', price: 5.99, image:"D:\fullstack\Burger"},
     { id: 2, name: 'Pizza', price: 8.99, image: 'https://via.placeholder.com/50?text=Pizza' },
     { id: 3, name: 'Pasta', price: 7.49, image: 'https://via.placeholder.com/50?text=Pasta' },
     { id: 4, name: 'Salad', price: 4.99, image: 'https://via.placeholder.com/50?text=Salad' },
