@@ -48,7 +48,7 @@ loginForm.addEventListener('submit', (event) => {
 
     if (username) {
         currentUser = username; // Save current username
-        alert(`Login successful! Welcome, ${username}!`);
+        alert(Login successful! Welcome, ${username}!);
         loginContainer.style.display = 'none';
         postContainer.style.display = 'block'; // Show post container
     } else {
@@ -90,7 +90,7 @@ function dislikePost(index) {
 
 // Function to add a comment with likes and dislikes
 function addComment(index) {
-    const commentInput = document.getElementById(`comment-input-${index}`);
+    const commentInput = document.getElementById(comment-input-${index});
     const comment = commentInput.value;
     if (comment) {
         const newComment = {
