@@ -48,7 +48,7 @@ loginForm.addEventListener('submit', (event) => {
 
     if (username) {
         currentUser = username; // Save current username
-        alert(Login successful! Welcome, ${username}!);
+        alert(`Login successful! Welcome, ${username}!`); // Corrected string interpolation
         loginContainer.style.display = 'none';
         postContainer.style.display = 'block'; // Show post container
     } else {
@@ -60,6 +60,12 @@ loginForm.addEventListener('submit', (event) => {
 postForm.addEventListener('submit', (event) => {
     event.preventDefault();
     const content = postContent.value;
+    
+    if (content.trim() === '') {
+        alert('Post content cannot be empty.'); // Feedback for empty post
+        return;
+    }
+
     const newPost = {
         username: currentUser, // Add username to the post
         content: content,
@@ -68,6 +74,7 @@ postForm.addEventListener('submit', (event) => {
         comments: [],
         date: new Date().toLocaleString() // Store current date and time
     };
+
     posts.push(newPost);
     postContent.value = '';
     savePosts(); // Save posts in localStorage
@@ -90,19 +97,24 @@ function dislikePost(index) {
 
 // Function to add a comment with likes and dislikes
 function addComment(index) {
-    const commentInput = document.getElementById(comment-input-${index});
+    const commentInput = document.getElementById(`comment-input-${index}`);
     const comment = commentInput.value;
-    if (comment) {
-        const newComment = {
-            text: comment,
-            likes: 0,
-            dislikes: 0
-        };
-        posts[index].comments.push(newComment);
-        commentInput.value = '';
-        savePosts();
-        displayPosts();
+
+    if (comment.trim() === '') {
+        alert('Comment cannot be empty.'); // Feedback for empty comment
+        return; // Stop further execution if the comment is empty
     }
+
+    const newComment = {
+        text: comment,
+        likes: 0,
+        dislikes: 0
+    };
+
+    posts[index].comments.push(newComment);
+    commentInput.value = '';
+    savePosts();
+    displayPosts();
 }
 
 // Function to like a comment
