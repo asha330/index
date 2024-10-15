@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="food.css">
+    <title>User Profile - FlavourFly</title>
+</head>
+<body>
+    <header>
+        <h1>FlavourFly</h1>
+        <h2>User Profile</h2>
+    </header>
+
+    <div id="profile-info" class="profile-container">
+        <h3>Your Profile</h3>
+        <p><strong>Username:</strong> <span id="username-display"></span></p>
+        <p><strong>Email:</strong> <span id="email-display"></span></p>
+        <button onclick="logout()">Logout</button>
+    </div>
+
+    <script>
+        // Function to load user profile data
+        function loadProfile() {
+            const username = localStorage.getItem('username');
+            const email = localStorage.getItem('email');
+
+            document.getElementById('username-display').innerText = username || 'N/A';
+            document.getElementById('email-display').innerText = email || 'N/A';
+        }
+
+        // Call loadProfile on page load
+        window.onload = loadProfile;
+
+        // Logout function
+        function logout() {
+            localStorage.removeItem('username');
+            localStorage.removeItem('email');
+            window.location.href = 'index.html'; // Redirect to login page
+        }
+    </script>
+</body>
+</html>
