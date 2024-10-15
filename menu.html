@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="food.css">
+    <title>Menu</title>
+</head>
+<body>
+    <header>
+        <h1 id="restaurant-title">FlavourFly</h1>
+    </header>
+
+    <div id="menu-items" class="menu-container"></div>
+
+    <div id="cart" style="display: block;">
+        <h2>Shopping Cart</h2>
+        <div id="cart-items"></div>
+        <button id="checkout-button" onclick="checkout()">Checkout</button>
+    </div>
+
+    <div id="checkout-form" style="display: none;">
+        <h2>Checkout</h2>
+        <form id="order-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" required />
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" required />
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" required />
+
+            <label for="payment-method">Payment Method:</label>
+            <select id="payment-method" required>
+                <option value="gpay">Google Pay</option>
+                <option value="phonepay">Phone Pay</option>
+                <option value="cash">Cash on Delivery</option>
+            </select>
+
+            <button type="submit">Place Order</button>
+        </form>
+    </div>
+
+    <script src="food.js"></script>
+    <script>
+        // Get the selected restaurant from the URL
+        const params = new URLSearchParams(window.location.search);
+        const selectedRestaurant = params.get('restaurant');
+
+        // Function to display the menu for the selected restaurant
+        function displayMenu() {
+            const menuItems = document.getElementById('menu-items');
+            menuItems.innerHTML = '';
+
+            if (selectedRestaurant) {
+                // Set the restaurant title
+                document.getElementById('restaurant-title').innerText = `${selectedRestaurant.charAt(0).toUpperCase() + selectedRestaurant.slice(1)} Menu`;
+                
+                restaurantMenus[selectedRestaurant].forEach(item => {
+                    const menuItem = document.createElement('div');
+                    menuItem.className = 'menu-item';
+                    menuItem.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}" onerror="this.onerror=null; this.src='images/placeholder.jpg';">
+                        <h3>${item.name}</h3>
+                        <p>${item.description}</p>
+                        <p>$${item.price.toFixed(2)}</p>
+                        <input type="number" min="1" value="1" id="quantity-${item.id}" />
+                        <button onclick="addToCart(${item.id})">Add to Cart</button>
+                    `;
+                    menuItems.appendChild(menuItem);
+                });
+                document.getElementById('cart').style.display = 'block';
+            }
+        }
+
+        // Call displayMenu on page load
+        window.onload = displayMenu;
+
+        // Update cart display
+        function updateCartDisplay() {
+            const cartItemsDiv = document.getElementById('cart-items');
+            cartItemsDiv.innerHTML = '';
+
+            if (cart.length === 0) {
+                cartItemsDiv.innerHTML = '<p>Your cart is empty!</p>';
+                return;
+            }
+
+            cart.forEach((item, index) => {
+                const cartItem = document.createElement('div');
+                cartItem.innerHTML = `
+                    <span>${item.name} (x${item.quantity}) - $${(item.price * item.quantity).toFixed(2)}</span>
+                    <button onclick="removeFromCart(${index})">Remove</button>
+                `;
+                cartItemsDiv.appendChild(cartItem);
+            });
+        }
+
+        // Add item to cart
+        function addToCart(itemId) {
+            const quantity = parseInt(document.getElementById(`quantity-${itemId}`).value);
+            const item = restaurantMenus[selectedRestaurant].find(i => i.id === itemId);
+
+            const existingItem = cart.find(i => i.id === itemId);
+            if (existingItem) {
+                existingItem.quantity += quantity; // Increase quantity if already in cart
+            } else {
+                cart.push({ ...item, quantity }); // Add new item to cart
+            }
+
+            alert(`${item.name} added to cart!`);
+            updateCartDisplay(); // Update cart display
+        }
+
+        // Remove item from cart
+        function removeFromCart(index) {
+            cart.splice(index, 1); // Remove item from cart array
+            updateCartDisplay(); // Update cart display
+        }
+
+        // Checkout function
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            // Show the checkout form
+            document.getElementById('checkout-form').style.display = 'block';
+            document.getElementById('cart').style.display = 'none'; // Hide the cart while checking out
+        }
+
+        // Handle order submission
+        document.getElementById('order-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            // Get user input
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const address = document.getElementById('address').value;
+            const paymentMethod = document.getElementById('payment-method').value;
+
+            // Prepare order details
+            let total = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+            let orderDetails = cart.map(item => `${item.name} (x${item.quantity}) - $${(item.price * item.quantity).toFixed(2)}`).join('\n');
+
+            // Confirm order
+            alert(`Order placed successfully!\n\nName: ${name}\nPhone: ${phone}\nAddress: ${address}\nPayment Method: ${paymentMethod}\n\nYour order:\n${orderDetails}\n\nTotal: $${total.toFixed(2)}`);
+
+            // Clear cart and form
+            cart = [];
+            updateCartDisplay();
+            document.getElementById('checkout-form').style.display = 'none';
+            document.getElementById('cart').style.display = 'block'; // Show the cart again
+            document.getElementById('order-form').reset(); // Reset the form fields
+        });
+    </script>
+</body>
+</html>
