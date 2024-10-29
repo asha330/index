@@ -4,13 +4,27 @@ const postsContainer = document.getElementById('posts-container');
 const loginForm = document.getElementById('login-form');
 const loginContainer = document.getElementById('login-container');
 const postContainer = document.getElementById('post-container');
+const errorDisplay = document.getElementById('error-display');
+const logoutButton = document.getElementById('logout-button');
 
-let posts = JSON.parse(localStorage.getItem('posts')) || [];
-let currentUser = null; // Store current user after login
+let posts = [];
+let currentUser = null;
+
+// Load posts from localStorage
+try {
+    posts = JSON.parse(localStorage.getItem('posts')) || [];
+} catch (e) {
+    console.error('Error reading posts from localStorage', e);
+    posts = [];
+}
 
 // Function to display posts
 function displayPosts() {
     postsContainer.innerHTML = '';
+    if (posts.length === 0) {
+        postsContainer.innerHTML = '<p>No posts to display.</p>';
+        return;
+    }
     posts.forEach((post, postIndex) => {
         const postElement = document.createElement('div');
         postElement.className = 'post';
@@ -41,43 +55,68 @@ function displayPosts() {
     });
 }
 
+// Show error message
+function showError(message) {
+    errorDisplay.textContent = message;
+    errorDisplay.style.display = 'block';
+}
+
+// Clear error messages
+function clearError() {
+    errorDisplay.style.display = 'none';
+}
+
 // Handle login
 loginForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    const username = document.getElementById('username').value;
+    clearError();
+    const username = document.getElementById('username').value.trim();
 
-    if (username) {
-        currentUser = username; // Save current username
-        alert(`Login successful! Welcome, ${username}!`); // Corrected string interpolation
+    if (username && username.length >= 3) {
+        currentUser = username;
+        alert(`Login successful! Welcome, ${username}!`);
         loginContainer.style.display = 'none';
-        postContainer.style.display = 'block'; // Show post container
+        postContainer.style.display = 'block';
+        logoutButton.style.display = 'block';
     } else {
-        alert('Please enter a username.');
+        showError('Please enter a valid username (at least 3 characters).');
     }
+});
+
+// Handle logout
+logoutButton.addEventListener('click', () => {
+    currentUser = null;
+    loginContainer.style.display = 'block';
+    postContainer.style.display = 'none';
+    logoutButton.style.display = 'none';
+    posts = []; // Clear posts if desired
+    savePosts();
+    displayPosts(); // Clear displayed posts
 });
 
 // Function to handle post submission
 postForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    const content = postContent.value;
-    
-    if (content.trim() === '') {
-        alert('Post content cannot be empty.'); // Feedback for empty post
+    clearError();
+    const content = postContent.value.trim();
+
+    if (content === '') {
+        showError('Post content cannot be empty.');
         return;
     }
 
     const newPost = {
-        username: currentUser, // Add username to the post
+        username: currentUser,
         content: content,
         likes: 0,
         dislikes: 0,
         comments: [],
-        date: new Date().toLocaleString() // Store current date and time
+        date: new Date().toLocaleString()
     };
 
     posts.push(newPost);
     postContent.value = '';
-    savePosts(); // Save posts in localStorage
+    savePosts();
     displayPosts();
 });
 
@@ -95,14 +134,14 @@ function dislikePost(index) {
     displayPosts();
 }
 
-// Function to add a comment with likes and dislikes
+// Function to add a comment
 function addComment(index) {
     const commentInput = document.getElementById(`comment-input-${index}`);
-    const comment = commentInput.value;
+    const comment = commentInput.value.trim();
 
-    if (comment.trim() === '') {
-        alert('Comment cannot be empty.'); // Feedback for empty comment
-        return; // Stop further execution if the comment is empty
+    if (comment === '') {
+        showError('Comment cannot be empty.');
+        return;
     }
 
     const newComment = {
