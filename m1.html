@@ -11,6 +11,7 @@
         <h1>Microblogging Application</h1>
     </header>
     <main>
+        <div id="error-display" style="color: red; display: none;"></div>
         <div id="login-container">
             <h2>Login</h2>
             <form id="login-form">
@@ -20,6 +21,7 @@
         </div>
 
         <div id="post-container" style="display: none;">
+            <button id="logout-button" style="display: none;">Logout</button>
             <form id="post-form">
                 <textarea id="post-content" placeholder="What's on your mind?" required></textarea>
                 <button type="submit">Post</button>
