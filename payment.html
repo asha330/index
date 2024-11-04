@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - Classifieds Marketplace</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Payment</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="register.html">Register</a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Enter Payment Details</h2>
+            <form id="payment-form" onsubmit="submitPayment(); return false;">
+                <input type="text" id="card-name" placeholder="Name on Card" required>
+                <input type="text" id="card-number" placeholder="Card Number" required>
+                <input type="text" id="expiry-date" placeholder="MM/YY" required>
+                <input type="text" id="cvv" placeholder="CVV" required>
+                <button type="submit">Pay Now</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Classifieds Marketplace</p>
+    </footer>
+
+    <script>
+        function submitPayment() {
+            alert("Payment successful! Thank you for your purchase.");
+            // Redirect to home or any other page as needed
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>
