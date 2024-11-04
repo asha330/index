@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classifieds App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Classifieds Marketplace</h1>
+        <nav>
+            <a href="#" onclick="showSection('home')">Home</a>
+            <a href="#" onclick="showSection('sell')">Sell Product</a>
+            <a href="#" onclick="showSection('cart')">Cart (<span id="cart-count">0</span>)</a>
+            <a href="#" onclick="showSection('register')">Register</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <h2>Available Products</h2>
+            <div id="product-list" class="product-container"></div>
+        </section>
+
+        <section id="sell" style="display:none;">
+            <h2>Sell a Product</h2>
+            <form id="sell-product-form" onsubmit="addProduct(); return false;">
+                <input type="text" id="product-name" placeholder="Product Name" required>
+                <input type="number" id="product-price" placeholder="Product Price" required>
+                <textarea id="product-description" placeholder="Product Description" required></textarea>
+                <input type="file" id="product-image" required>
+                <button type="submit">Add Product</button>
+            </form>
+        </section>
+
+        <section id="cart" style="display:none;">
+            <h2>Your Cart</h2>
+            <ul id="cart-items"></ul>
+            <p id="total-price">Total: ₹0.00</p>
+            <button onclick="proceedToPayment()">Proceed to Payment</button>
+        </section>
+
+        <section id="register" style="display:none;">
+            <h2>Register</h2>
+            <form id="registration-form" onsubmit="register(); return false;">
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <input type="text" id="address" placeholder="Address" required>
+                <button type="submit">Register</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Classifieds Marketplace</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
