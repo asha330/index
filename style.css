@@ -1,0 +1,192 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f4f4f4; /* Light background */
+    color: #333; /* Dark text */
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: #4CAF50; /* Green header */
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+nav {
+    margin-top: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #e0e0e0; /* Light gray on hover */
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+}
+
+/* Section Titles */
+h2 {
+    color: #4CAF50; /* Green for section titles */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Section Styles */
+section {
+    background-color: white; /* White background for sections */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin-bottom: 20px;
+}
+
+section p {
+    margin-bottom: 10px;
+}
+
+section textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    resize: vertical;
+}
+
+button {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%; /* Full width */
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+/* Form Styles */
+form {
+    background-color: #f9f9f9; /* Light form background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: auto;
+    max-width: 500px;
+}
+
+form input, form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.product-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 300px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+    max-width: 100%;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.product-card h3 {
+    margin: 10px 0;
+}
+
+.product-card p {
+    color: #666; /* Gray for product descriptions */
+}
+
+.product-card button {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
+
+.product-card button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+/* Reviews */
+.reviews {
+    margin-top: 15px;
+    text-align: left;
+}
+
+.reviews h4 {
+    margin-bottom: 10px;
+}
+
+.reviews p {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
+
+/* Cart Styles */
+#cart-items li {
+    list-style-type: none;
+    padding: 10px;
+    background-color: #f9f9f9;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+}
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background: #4CAF50; /* Same green as header */
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
