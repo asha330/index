@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave Application</title>
+    <link rel="stylesheet" href="style6.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Apply for Leave</h2>
+        <h3>Select Leave Type</h3>
+        
+        <form id="leave-form">
+            <label for="leave-type">Leave Type:</label>
+            <select id="leave-type" name="leave-type" required>
+                <option value="">Select Leave Type</option>
+                <option value="casual">Casual Leave</option>
+                <option value="medical">Medical Leave</option>
+            </select>
+
+            <div id="leave-balance"></div> <!-- This will display the available leave days -->
+
+            <label for="start-date">Start Date:</label>
+            <input type="date" id="start-date" name="start-date" required>
+
+            <label for="end-date">End Date:</label>
+            <input type="date" id="end-date" name="end-date" required>
+
+            <label for="reason">Reason:</label>
+            <textarea id="reason" name="reason" required></textarea>
+
+            <button type="submit" id="submit-btn" disabled>Submit Leave Request</button> <!-- Button is disabled by default -->
+        </form>
+    </div>
+
+    <script src="leave_application.js"></script>
+</body>
+</html>
