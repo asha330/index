@@ -150,9 +150,18 @@ a:hover {
     font-weight: 700;
 }
 
-.thank-you-container p {
+.thank-you-container, .cont{
     font-size: 20px;
-    color: #34495e;
+    color:black;
+}
+
+/* Specific message for successful leave submission */
+.thank-you-container p.success-message {
+    color: black; /* Set the text color to black */
+    font-size: 18px; /* Optional: Adjust the font size for better readability */
+    font-weight: 500; /* Optional: Make the text a bit bold */
+    text-align: center; /* Center-align the message */
+    margin-top: 20px; /* Add some spacing above the message */
 }
 
 /* Animations */
