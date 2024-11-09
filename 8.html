@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey</title>
+    <link rel="stylesheet" href="8.css">
+</head>
+<body>
+
+<div class="survey-container">
+    <header>
+        <h1>Survey Time!</h1>
+        <p>Please answer the following questions. We appreciate your time.</p>
+    </header>
+
+    <div class="progress-bar-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <form id="surveyForm">
+        <!-- Dynamic question cards will be inserted here -->
+    </form>
+
+    <div class="buttons">
+        <button class="btn" id="nextBtn" onclick="nextQuestion()">Next</button>
+        <button class="btn" id="submitBtn" onclick="submitSurvey()" style="display:none;">Submit Survey</button>
+    </div>
+
+    <div id="thankYouMessage" class="thank-you" style="display:none;">
+        <h2>Thank you for completing the survey!</h2>
+        <p>We appreciate your responses. You can now submit the survey.</p>
+    </div>
+</div>
+
+<script src="8.js"></script>
+</body>
+</html>
