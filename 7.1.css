@@ -1,0 +1,133 @@
+/* General Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f7f8fc;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Container Styles */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header */
+header {
+    padding: 20px 0;
+}
+
+/* Add New Task Button */
+.add-btn {
+    display: block;
+    width: 200px;
+    margin: 0 auto 20px;
+    padding: 12px;
+    background-color: #00aaff;
+    color: white;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.add-btn:hover {
+    background-color: #008fbb;
+    transform: scale(1.05);
+}
+
+/* Task List Styles */
+.task-list {
+    margin-top: 30px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px 20px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #00aaff;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+td.status {
+    cursor: pointer;
+    font-weight: bold;
+    color: #007BFF;
+    transition: color 0.3s ease;
+}
+
+td.status:hover {
+    color: #0056b3;
+}
+
+/* Actions Buttons */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Task Row Animation */
+tr {
+    transition: transform 0.3s ease-in-out;
+}
+
+tr:hover {
+    transform: translateX(10px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    table, th, td {
+        font-size: 14px;
+    }
+
+    .add-btn {
+        width: 180px;
+    }
+}
