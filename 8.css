@@ -1,0 +1,179 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #121212;
+    color: #f5f5f5;
+    text-align: center;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Survey Container */
+.survey-container {
+    width: 100%;
+    max-width: 600px;
+    background-color: #1f1f1f;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    color: #fff;
+}
+
+/* Header */
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+header p {
+    font-size: 1.1rem;
+    color: #bbb;
+    margin-bottom: 20px;
+}
+
+/* Progress Bar */
+.progress-bar-container {
+    width: 75%;
+    height: 8px;
+    background-color: #333;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0;
+    background-color: #4caf50;
+    border-radius: 5px;
+}
+
+/* Question Card */
+.question-card {
+    margin-bottom: 20px;
+    background-color: #282828;
+    padding: 20px;
+    border-radius: 10px;
+    display: none;
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Question Text */
+.question-text {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+/* Inputs */
+input[type="radio"],
+input[type="checkbox"] {
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+input[type="radio"]:checked,
+input[type="checkbox"]:checked {
+    background-color: #4caf50;
+    border-color: #4caf50;
+}
+
+/* Styled Inputs */
+input[type="radio"], 
+input[type="checkbox"] {
+    border-radius: 50%;
+    border: 2px solid #444;
+    margin-right: 10px;
+    padding: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+input[type="radio"]:checked, 
+input[type="checkbox"]:checked {
+    background-color: #4caf50;
+}
+
+/* Buttons */
+button.btn {
+    background-color: #4caf50;
+    color: white;
+    font-size: 1.1rem;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+button.btn:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+button.btn:disabled {
+    background-color: #888;
+    cursor: not-allowed;
+}
+
+/* Floating Submit Button */
+#submitBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #4caf50;
+    padding: 20px 30px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#submitBtn:hover {
+    background-color: #45a049;
+    transform: scale(1.1);
+}
+
+/* Result */
+.result {
+    margin-top: 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #4caf50;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .survey-container {
+        padding: 20px;
+        width: 100%;
+    }
+
+    button.btn {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+}
