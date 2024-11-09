@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Management Dashboard</title>
+    <link rel="stylesheet" href="7.1.css">
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Project Management Dashboard</h1>
+    </header>
+    
+    <main>
+        <button class="btn add-btn" onclick="addTask()">Add New Task</button>
+        
+        <div class="task-list">
+            <table id="taskTable">
+                <thead>
+                    <tr>
+                        <th>Task Name</th>
+                        <th>Description</th>
+                        <th>Assigned To</th>
+                        <th>Due Date</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Tasks will be dynamically populated here -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+</div>
+
+<script src="7.1.js"></script>
+
+</body>
+</html>
